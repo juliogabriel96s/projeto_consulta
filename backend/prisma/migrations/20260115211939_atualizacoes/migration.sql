@@ -3,7 +3,7 @@ CREATE TYPE "Role" AS ENUM ('PACIENTE', 'DOUTOR');
 
 -- CreateTable
 CREATE TABLE "user" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password_hash" TEXT NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE "Consulta" (
     "id" SERIAL NOT NULL,
     "descricao" TEXT NOT NULL,
     "dataHora" TIMESTAMP(3) NOT NULL,
-    "userId" INTEGER,
+    "userId" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 

@@ -1,6 +1,6 @@
-import { Either, right } from "../../core/either";
-import { Consulta } from "../../generated/prisma/client";
-import { ConsultasRepository } from "../../repositories/consultas-repository";
+import { Either, right } from "../../core/either.js";
+import { Consulta } from "@prisma/client";
+import { ConsultasRepository } from "../../repositories/consultas-repository.js";
 
 type GetAllConsultasUseCaseResponse = Either<
 {},

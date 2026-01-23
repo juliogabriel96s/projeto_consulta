@@ -1,10 +1,9 @@
-import { Consulta } from "../../generated/prisma/client";
-import { ConsultaUncheckedCreateInput } from "../../generated/prisma/models";
-import { prisma } from "../../lib/prisma";
-import { ConsultasRepository } from "../consultas-repository";
+import { Consulta, Prisma } from "@prisma/client";
+import { prisma } from "../../lib/prisma.js";
+import { ConsultasRepository } from "../consultas-repository.js";
 
 export class PrismaConsultasReporitory implements ConsultasRepository{
-    async create(data: ConsultaUncheckedCreateInput) {
+    async create(data: Prisma.ConsultaUncheckedCreateInput) {
         const consulta = await prisma.consulta.create({
             data
         })
@@ -50,11 +49,19 @@ export class PrismaConsultasReporitory implements ConsultasRepository{
     }
     async findConflict(start: Date, end: Date) {
         return await prisma.consulta.findFirst({
-            where:{
-                dataHora:{
-                    gte: start,
-                    lte: end
-                }
+            where: {
+                AND:[
+                    {
+                        dataHora:{
+                            lt: end
+                        }
+                    },
+                    {
+                        dataHora:{
+                            gte:new Date(start.getTime() - 30 * 60 * 1000)
+                        }
+                    }
+                ]
             }
         })
     }

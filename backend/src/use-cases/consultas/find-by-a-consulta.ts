@@ -1,7 +1,7 @@
-import { Either, left, right } from "../../core/either"
-import { ResourceNotFound } from "../../core/errors/errors/resource-not-found-error"
-import { Consulta } from "../../generated/prisma/client"
-import { ConsultasRepository } from "../../repositories/consultas-repository"
+import { Either, left, right } from "../../core/either.js"
+import { ResourceNotFound } from "../../core/errors/errors/resource-not-found-error.js"
+import { Consulta } from "@prisma/client"
+import { ConsultasRepository } from "../../repositories/consultas-repository.js"
 
 interface FindByAConsultaUseCaseRequest {
     consultaId: number

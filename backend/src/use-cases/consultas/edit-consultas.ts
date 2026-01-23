@@ -1,7 +1,7 @@
-import { Either, left, right } from "../../core/either"
-import { ResourceNotFound } from "../../core/errors/errors/resource-not-found-error"
-import { Consulta } from "../../generated/prisma/client"
-import { ConsultasRepository } from "../../repositories/consultas-repository"
+import { Either, left, right } from "../../core/either.js"
+import { ResourceNotFound } from "../../core/errors/errors/resource-not-found-error.js"
+import { Consulta } from "@prisma/client"
+import { ConsultasRepository } from "../../repositories/consultas-repository.js"
 
 interface EditConsultaUseCaseRequest{
     consultaId: number
@@ -30,8 +30,8 @@ export class EditConsultaUseCase{
             return left(new ResourceNotFound())
         }
 
-        descricao = consulta.descricao
-        dataHora = consulta.dataHora
+        consulta.descricao = descricao
+        consulta.dataHora = dataHora
 
         await this.consultaRepository.save(consulta)
 

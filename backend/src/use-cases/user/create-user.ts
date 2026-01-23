@@ -1,8 +1,8 @@
 import { hash } from "bcryptjs"
-import { Either, left, right } from "../../core/either"
-import { User } from "../../generated/prisma/client"
-import { UserRepository } from "../../repositories/user-repository"
-import { NotAllowedError } from "../../core/errors/errors/not-allowed-error"
+import { UserRepository } from "../../repositories/user-repository.js"
+import { NotAllowedError } from "../../core/errors/errors/not-allowed-error.js"
+import { Either, left, right } from "../../core/either.js"
+import { User } from "@prisma/client"
 
 interface CreateUserUseCaseRequest{
     name: string

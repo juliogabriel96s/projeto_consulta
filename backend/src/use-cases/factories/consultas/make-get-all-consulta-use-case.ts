@@ -1,5 +1,5 @@
-import { PrismaConsultasReporitory } from "../../../repositories/prisma/prisma-category-repository";
-import { GetAllConsultasUseCase } from "../../consultas/get-all-consulta";
+import { PrismaConsultasReporitory } from "../../../repositories/prisma/prisma-category-repository.js";
+import { GetAllConsultasUseCase } from "../../consultas/get-all-consulta.js";
 
 export function makeGetAllConsultaUseCase(){
     const consultaRepository = new PrismaConsultasReporitory()

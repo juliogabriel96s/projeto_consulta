@@ -1,11 +1,11 @@
-import { Either, left, right } from "../../core/either"
-import { NotAllowedError } from "../../core/errors/errors/not-allowed-error"
-import { Consulta } from "../../generated/prisma/client"
-import { ConsultasRepository } from "../../repositories/consultas-repository"
-import { UserRepository } from "../../repositories/user-repository"
+import { Either, left, right } from "../../core/either.js"
+import { NotAllowedError } from "../../core/errors/errors/not-allowed-error.js"
+import { Consulta } from "@prisma/client"
+import { ConsultasRepository } from "../../repositories/consultas-repository.js"
+import { UserRepository } from "../../repositories/user-repository.js"
 
 interface CreateConsultaUseCaseRequest{
-    userId: number
+    userId: string
     descricao: string
     dataHora: Date
 }
@@ -43,7 +43,7 @@ export class CreateConsultaUseCase{
         }
 
         const consulta = await this.consultaRepository.create({
-            userId,
+            userId: user.id,
             descricao,
             dataHora
         })

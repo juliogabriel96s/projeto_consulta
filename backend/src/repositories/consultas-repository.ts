@@ -1,5 +1,4 @@
-import { Consulta, Prisma } from "../generated/prisma/client";
-
+import { Prisma, Consulta } from "@prisma/client"
 export interface ConsultasRepository{
     create(data: Prisma.ConsultaUncheckedCreateInput): Promise<Consulta>
     findById(id: number): Promise<Consulta | null>
